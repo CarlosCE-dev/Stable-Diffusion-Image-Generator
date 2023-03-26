@@ -1,14 +1,15 @@
-import { Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
+import { AttachmentBuilder, Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
 import { DiscordCommandTypes } from '../Models/Enums/DiscordCommandTypes';
 import { SlashCommandBuilder } from '@discordjs/builders';
 import Env from '@ioc:Adonis/Core/Env';
 import Logger from '@ioc:Adonis/Core/Logger';
+import { getImageRequester } from 'App/Helpers/ImageGenerator';
 
 /**
  * Custom service to retain all the discord bot functionality
  */
 class DiscordService {
-
+    private busy = false;
     /**
      * Start the minecraft bot
      */
@@ -26,7 +27,15 @@ class DiscordService {
 
         client.on(Events.InteractionCreate, async (interaction) => {
             if (!interaction.isChatInputCommand()) return;
-            console.log(interaction);
+            const tags = interaction.options.get('tags')?.value ?? "";
+            const size = interaction.options.get('size')?.value ?? 0;
+            
+            this.busy = true;
+            await interaction.reply({ content: "Generating image", ephemeral: true});
+            await getImageRequester(tags.toString(), Number(size));
+            const image = new AttachmentBuilder('C:\\Users\\Carlos\\Documents\\Desarrollo\\AdonisJs\\discord-ai-gen\\tmp\\uploads\\newImage.jpg');
+            await interaction.followUp({ content: `Image created with the following tags: ${tags}`, files: [image]});
+            this.busy = false;
         });
 
         // Login to Discord with your client's token
@@ -48,7 +57,7 @@ class DiscordService {
 
         const rest = new REST({ version: '10' }).setToken(token);
         const commands = this.generateCommands();
-
+    
         try {
             await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands });
             Logger.info("The discord command were added to the bot");
@@ -60,12 +69,41 @@ class DiscordService {
      * Generate list of commands
      * @returns Returns a list of commands available for the discord bot
      */
-    private generateCommands() {
-        const commands = [
-            new SlashCommandBuilder().setName(DiscordCommandTypes.generateImage).setDescription('Generate a AI image based on tags'),
-        ].map(command => command.toJSON());
-
-        return commands;
+    private generateCommands() { 
+        return [
+            {
+                name: 'generate',
+                description: "Generate images based on tags",
+                options: [
+                    {
+                        name: 'tags',
+                        description: "Description of what you want to see",
+                        type: 3,
+                        required: true,
+                    },
+                    {
+                        name: 'size',
+                        description: "Size of your image",
+                        type: 4,
+                        required: true,
+                        choices: [
+                            { 
+                                name: "Square: 500 X 500 pixels",
+                                value: 0
+                            },
+                            { 
+                                name: "Portrait: 1000 x 500 pixels",
+                                value: 1
+                            },
+                            { 
+                                name: "Landscape: 500 x 1000 pixels",
+                                value: 2
+                            },
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 /**

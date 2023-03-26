@@ -5,5 +5,5 @@
     /**
      * Generate image based on tags
      */
-    generateImage = "generate-image",
+    generateImage = "generate",
 }

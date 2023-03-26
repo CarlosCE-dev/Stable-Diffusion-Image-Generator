@@ -3,7 +3,24 @@ import Logger from '@ioc:Adonis/Core/Logger';
 import { IStableDiffusionResponse } from 'App/Interfaces/IStableDiffusionResponse';
 import Drive from '@ioc:Adonis/Core/Drive'
 
-export const getImageRequester = async () => {
+
+const sizeTypes = {
+    [0]: {
+        width: 500,
+        height: 500,
+    },
+    [1]: {
+        width: 500,
+        height: 1000,
+    },
+    [2]: {
+        width: 1000,
+        height: 500,
+    }
+}
+
+export const getImageRequester = async (tags:string, sizeType:number) => {
+    const { width, height } = sizeTypes[sizeType];
     const payload = {
         enable_hr: false,
         denoising_strength: 0,
@@ -14,10 +31,8 @@ export const getImageRequester = async () => {
         hr_second_pass_steps: 0,
         hr_resize_x: 0,
         hr_resize_y: 0,
-        prompt: "",
-        styles: [
-            "default"
-        ],
+        prompt: tags,
+        styles: [],
         seed: -1,
         subseed: -1,
         subseed_strength: 0,
@@ -26,10 +41,10 @@ export const getImageRequester = async () => {
         sampler_name: "",
         batch_size: 1,
         n_iter: 1,
-        steps: 30,
+        steps: 20,
         cfg_scale: 7,
-        width: 512,
-        height: 512,
+        width,
+        height,
         restore_faces: false,
         tiling: false,
         do_not_save_samples: false,
@@ -64,9 +79,10 @@ export const getImageRequester = async () => {
         const [ firstImage ] = images;
 
         await Drive.put('newImage.jpg', Buffer.from(firstImage, 'base64'));
-        return true;
+        return "true";
 
     } catch (error) {
         Logger.error({ error }, "An error occurred when trying to generate the AI image");
+        return "";
     }
 }
