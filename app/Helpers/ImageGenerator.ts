@@ -2,71 +2,21 @@ import axios, { HttpStatusCode } from 'axios';
 import Logger from '@ioc:Adonis/Core/Logger';
 import { IStableDiffusionInfoResponse, IStableDiffusionResponse } from 'App/Interfaces/IStableDiffusionResponse';
 import Drive from '@ioc:Adonis/Core/Drive'
+import { IPropModel } from 'App/Interfaces/IPropModel';
+import { StableDiffusionRequest } from 'App/Models/StableDiffusionRequest';
+import { IBasicApiResponse } from 'App/Interfaces/IBasicApiResponse';
+import Env from '@ioc:Adonis/Core/Env';
 
-
-const sizeTypes = {
-    [0]: {
-        width: 500,
-        height: 500,
-    },
-    [1]: {
-        width: 500,
-        height: 1000,
-    },
-    [2]: {
-        width: 1000,
-        height: 500,
-    }
-}
-
-export const getImageRequester = async (tags:string, sizeType:number, negative:string, seed:number) => {
-    const { width, height } = sizeTypes[sizeType];
-    const payload = {
-        enable_hr: false,
-        denoising_strength: 0,
-        firstphase_width: 0,
-        firstphase_height: 0,
-        hr_scale: 2,
-        hr_upscaler: "string",
-        hr_second_pass_steps: 0,
-        hr_resize_x: 0,
-        hr_resize_y: 0,
-        prompt: tags,
-        styles: [],
-        seed,
-        subseed: -1,
-        subseed_strength: 0,
-        seed_resize_from_h: -1,
-        seed_resize_from_w: -1,
-        sampler_name: "",
-        batch_size: 1,
-        n_iter: 1,
-        steps: 30,
-        cfg_scale: 7,
-        width,
-        height,
-        restore_faces: false,
-        tiling: false,
-        do_not_save_samples: false,
-        do_not_save_grid: false,
-        negative_prompt: `(worst quality, low quality:1.4), monochrome, zombie, ${negative}`,
-        eta: 0,
-        s_churn: 0,
-        s_tmax: 0,
-        s_tmin: 0,
-        s_noise: 1,
-        override_settings: {},
-        override_settings_restore_afterwards: true,
-        script_args: [],
-        sampler_index: "DPM++ 2M Karras",
-        script_name: "",
-        send_images: true,
-        save_images: false,
-        alwayson_scripts: {}
-    }
-
+/**
+ * Generate a HTTP petition to stable diffusion
+ * @param data 
+ * @returns 
+ */
+export const getImageRequester = async (data:IPropModel): Promise<IBasicApiResponse> => {
+    
+    const payload = new StableDiffusionRequest(data);
     try {
-        const response = await axios.post<IStableDiffusionResponse>('http://127.0.0.1:7860/sdapi/v1/txt2img', payload, {
+        const response = await axios.post<IStableDiffusionResponse>(`${Env.get('STABLE_DIFFUSION_URL')}/sdapi/v1/txt2img`, payload, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -81,11 +31,14 @@ export const getImageRequester = async (tags:string, sizeType:number, negative:s
 
         const infoTags = JSON.parse(info) as IStableDiffusionInfoResponse;
 
-        await Drive.put('newImage.jpg', Buffer.from(firstImage, 'base64'));
-        return infoTags.seed;
+        const fileName = `${new Date().valueOf()}-${infoTags.seed}.png`;
+        await Drive.put(fileName, Buffer.from(firstImage, 'base64'));
+        payload.setDataFromResponse(fileName, infoTags.seed);
+
+        return { success: true, data: payload };
 
     } catch (error) {
         Logger.error({ error }, "An error occurred when trying to generate the AI image");
-        return 0;
+        return { success: false };
     }
 }
