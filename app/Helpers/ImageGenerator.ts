@@ -1,6 +1,6 @@
 import axios, { HttpStatusCode } from 'axios';
 import Logger from '@ioc:Adonis/Core/Logger';
-import { IStableDiffusionResponse } from 'App/Interfaces/IStableDiffusionResponse';
+import { IStableDiffusionInfoResponse, IStableDiffusionResponse } from 'App/Interfaces/IStableDiffusionResponse';
 import Drive from '@ioc:Adonis/Core/Drive'
 
 
@@ -19,7 +19,7 @@ const sizeTypes = {
     }
 }
 
-export const getImageRequester = async (tags:string, sizeType:number, negative:string) => {
+export const getImageRequester = async (tags:string, sizeType:number, negative:string, seed:number) => {
     const { width, height } = sizeTypes[sizeType];
     const payload = {
         enable_hr: false,
@@ -33,7 +33,7 @@ export const getImageRequester = async (tags:string, sizeType:number, negative:s
         hr_resize_y: 0,
         prompt: tags,
         styles: [],
-        seed: -1,
+        seed,
         subseed: -1,
         subseed_strength: 0,
         seed_resize_from_h: -1,
@@ -75,14 +75,17 @@ export const getImageRequester = async (tags:string, sizeType:number, negative:s
         if (response.status !== HttpStatusCode.Ok) {
             throw Error(response.statusText);
         }
-        const { images } = response.data;
+
+        const { images, info } = response.data;
         const [ firstImage ] = images;
 
+        const infoTags = JSON.parse(info) as IStableDiffusionInfoResponse;
+
         await Drive.put('newImage.jpg', Buffer.from(firstImage, 'base64'));
-        return "true";
+        return infoTags.seed;
 
     } catch (error) {
         Logger.error({ error }, "An error occurred when trying to generate the AI image");
-        return "";
+        return 0;
     }
 }

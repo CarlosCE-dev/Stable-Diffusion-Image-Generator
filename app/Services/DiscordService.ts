@@ -1,6 +1,4 @@
 import { AttachmentBuilder, Client, Events, GatewayIntentBits, REST, Routes } from 'discord.js';
-import { DiscordCommandTypes } from '../Models/Enums/DiscordCommandTypes';
-import { SlashCommandBuilder } from '@discordjs/builders';
 import Env from '@ioc:Adonis/Core/Env';
 import Logger from '@ioc:Adonis/Core/Logger';
 import { getImageRequester } from 'App/Helpers/ImageGenerator';
@@ -25,24 +23,23 @@ class DiscordService {
             Logger.info("The discord bot is ready");
         });
 
-       
-
         client.on(Events.InteractionCreate, async (interaction) => {
             if (!interaction.isChatInputCommand()) return;
             const tags = interaction.options.get('tags')?.value ?? "";
             const size = interaction.options.get('size')?.value ?? 0;
             const negative = interaction.options.get('negative')?.value ?? "";
+            const seed = interaction.options.get('seed')?.value ?? -1;
             const generateNegativeMessage = (value:string) => {
                 if (value === "") return "";
     
-                return ` Negative tags: ${value};`
+                return ` Negative tags: ${value}`;
             }
 
             this.busy = true;
             await interaction.reply({ content: "Generating image", ephemeral: true});
-            await getImageRequester(tags.toString(), Number(size), negative.toString());
+            const newSeed = await getImageRequester(tags.toString(), Number(size), negative.toString(), Number(seed));
             const image = new AttachmentBuilder('C:\\Users\\Carlos\\Documents\\Desarrollo\\AdonisJs\\discord-ai-gen\\tmp\\uploads\\newImage.jpg');
-            await interaction.followUp({ content: `Image created by ${interaction.user.username} with the following tags: ${tags}.${generateNegativeMessage(negative.toString())}`, files: [image]});
+            await interaction.followUp({ content: `Image created by ${interaction.user.username} with the following tags: ${tags}.${generateNegativeMessage(negative.toString())} [Seed: ${newSeed}]`, files: [image]});
             this.busy = false;
         });
 
@@ -113,6 +110,12 @@ class DiscordService {
                         name: 'negative',
                         description: "Negative tags",
                         type: 3,
+                        required: false,
+                    },
+                    {
+                        name: 'seed',
+                        description: "Seed of previous image created",
+                        type: 4,
                         required: false,
                     }
                 ]
