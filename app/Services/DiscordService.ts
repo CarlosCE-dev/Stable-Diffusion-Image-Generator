@@ -25,16 +25,24 @@ class DiscordService {
             Logger.info("The discord bot is ready");
         });
 
+       
+
         client.on(Events.InteractionCreate, async (interaction) => {
             if (!interaction.isChatInputCommand()) return;
             const tags = interaction.options.get('tags')?.value ?? "";
             const size = interaction.options.get('size')?.value ?? 0;
-            
+            const negative = interaction.options.get('negative')?.value ?? "";
+            const generateNegativeMessage = (value:string) => {
+                if (value === "") return "";
+    
+                return ` Negative tags: ${value};`
+            }
+
             this.busy = true;
             await interaction.reply({ content: "Generating image", ephemeral: true});
-            await getImageRequester(tags.toString(), Number(size));
+            await getImageRequester(tags.toString(), Number(size), negative.toString());
             const image = new AttachmentBuilder('C:\\Users\\Carlos\\Documents\\Desarrollo\\AdonisJs\\discord-ai-gen\\tmp\\uploads\\newImage.jpg');
-            await interaction.followUp({ content: `Image created with the following tags: ${tags}`, files: [image]});
+            await interaction.followUp({ content: `Image created by ${interaction.user.username} with the following tags: ${tags}.${generateNegativeMessage(negative.toString())}`, files: [image]});
             this.busy = false;
         });
 
@@ -72,7 +80,7 @@ class DiscordService {
     private generateCommands() { 
         return [
             {
-                name: 'generate',
+                name: 'image',
                 description: "Generate images based on tags",
                 options: [
                     {
@@ -100,6 +108,12 @@ class DiscordService {
                                 value: 2
                             },
                         ]
+                    },
+                    {
+                        name: 'negative',
+                        description: "Negative tags",
+                        type: 3,
+                        required: false,
                     }
                 ]
             }

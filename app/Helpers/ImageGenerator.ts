@@ -19,7 +19,7 @@ const sizeTypes = {
     }
 }
 
-export const getImageRequester = async (tags:string, sizeType:number) => {
+export const getImageRequester = async (tags:string, sizeType:number, negative:string) => {
     const { width, height } = sizeTypes[sizeType];
     const payload = {
         enable_hr: false,
@@ -41,7 +41,7 @@ export const getImageRequester = async (tags:string, sizeType:number) => {
         sampler_name: "",
         batch_size: 1,
         n_iter: 1,
-        steps: 20,
+        steps: 30,
         cfg_scale: 7,
         width,
         height,
@@ -49,7 +49,7 @@ export const getImageRequester = async (tags:string, sizeType:number) => {
         tiling: false,
         do_not_save_samples: false,
         do_not_save_grid: false,
-        negative_prompt: "(worst quality, low quality:1.4), monochrome, zombie",
+        negative_prompt: `(worst quality, low quality:1.4), monochrome, zombie, ${negative}`,
         eta: 0,
         s_churn: 0,
         s_tmax: 0,
