@@ -31,14 +31,12 @@ class DiscordService {
             
             const data = getOptionsFromDiscordProps(interaction);
             const { success, data:stableDiffusionObject } = await getImageRequester(data);
+
+            const { dirname } = require('path');
+
             if (success && stableDiffusionObject) {
-
-                Logger.info(stableDiffusionObject.toString());
-                const fullPath = path.resolve(await Drive.getUrl(stableDiffusionObject.fileName));
-                Logger.info(fullPath);
-                const image = new AttachmentBuilder(fullPath);
+                const image = new AttachmentBuilder(`${Env.get("DRIVE_FILE_LOCATION")}\\${stableDiffusionObject.fileName}`);
                 await interaction.followUp({ content: generateFollowUpMessage(data, interaction.user.username, stableDiffusionObject.newSeed), files: [image]});
-
             } else {
                 await interaction.followUp({ content: "An error occurred while trying to generate the image"});
             }

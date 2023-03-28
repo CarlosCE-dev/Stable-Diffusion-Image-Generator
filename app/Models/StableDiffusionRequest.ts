@@ -21,6 +21,10 @@ export class StableDiffusionRequest extends StableBasicProps {
      */
     prompt: string;
     /**
+     * Negative tags
+     */
+    negative_prompt: string;
+    /**
      * Seed of a image previously generated
      */
     seed: number;

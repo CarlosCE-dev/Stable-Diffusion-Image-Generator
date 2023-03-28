@@ -25,7 +25,6 @@ export class StableBasicProps {
     tiling: false;
     do_not_save_samples: false;
     do_not_save_grid: false;
-    negative_prompt: string;
     eta: 0;
     s_churn: 0;
     s_tmax: 0;
