@@ -18,8 +18,12 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from '@ioc:Adonis/Core/Route';
+import TestsController from 'App/Controllers/Http/TestsController';
 
-Route.get('/', async () => {
-  return { hello: 'world' }
+/**
+ * Basic test route
+ */
+Route.get('/test', async (ctx) => {
+	return new TestsController().index(ctx);
 })

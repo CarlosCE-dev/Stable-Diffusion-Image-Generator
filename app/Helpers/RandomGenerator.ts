@@ -1,45 +1,48 @@
 import { faker } from "@faker-js/faker";
-import { AdjectivesSize } from "App/Seeds/Adjectives";
-import { EyeTypes } from "App/Seeds/Eyes";
-import { HairTypes } from "App/Seeds/Hair";
-import { HeadTypesAccessories } from "App/Seeds/Head";
+import { AdjectivesSize, EyeTypes, HairTypes, HeadTypesAccessories } from "App/Seeds";
+import { getRandomBoolean, getRandomElementFromArray } from "./RandomHelper";
+import "../Extensors/StringExtensors";
 
 /**
  * Generates random hair
+ * @param hasSameColor Indicates if the eyes and hair are the same color
+ * @param colorName The color for hair and eyes
  * @returns random string
  */
-export const randomHairGenerator = () => {
-    return `(${getRandomElementFromArray(HairTypes)} ${faker.color.human()} ${getRandomElementFromArray(AdjectivesSize)} hair)`;
+export const randomHairGenerator = (hasSameColor:boolean, colorName:string) => {
+    return `${getRandomElementFromArray(HairTypes)} ${getColorProp(hasSameColor, colorName)} ${getRandomElementFromArray(AdjectivesSize)} hair`.importance();
 }
 /**
  * Generates random eyes
+ * @param hasSameColor Indicates if the eyes and hair are the same color
+ * @param colorName The color for hair and eyes
  * @returns random string
  */
-export const randomEyesGenerator = () => {
-    return `(${getRandomElementFromArray(EyeTypes)} ${faker.color.human()} ${getRandomElementFromArray(AdjectivesSize)} eyes)`;
+export const randomEyesGenerator = (hasSameColor:boolean, colorName:string) => {
+    return `${getRandomElementFromArray(EyeTypes)} ${getColorProp(hasSameColor, colorName)} ${getRandomElementFromArray(AdjectivesSize)} eyes`.importance();
 }
 /**
  * Generates random hat
  * @returns random string
  */
-export const randomHatGenerator =() => {
-    return `((${faker.color.human()} ${getRandomElementFromArray(HeadTypesAccessories)}))`;
+export const randomHatGenerator = () => {
+    return `${faker.color.human()} ${getRandomElementFromArray(HeadTypesAccessories)}`.importance();
 }
 /**
- * Generates a random number between two numbers
- * @param min Minimum value
- * @param max Maximum value
- * @returns A random number
+ * Adds negative tags to  random model
+ * @returns A negative tag
  */
-export const randomIntFromInterval = (min:number, max:number) =>  { // min and max included 
-    return Math.floor(Math.random() * (max - min + 1) + min);
+export const randomNegativeTagsGenerator = () => {
+    const hasNSFW = getRandomBoolean(0.1);
+    return hasNSFW ? "nsfw" : "";
 }
 /**
- * Get random element fromm array
- * @param values The collection of elements
- * @returns A random element
+ * Generate a random or predefined color for hair and eyes
+ * @param hasSameColor Indicates if the eyes and hair are the same color
+ * @param colorName The color for hair and eyes
+ * @returns 
  */
-export const getRandomElementFromArray = (values:any[]) => {
-    var randomIndex = Math.floor(Math.random() * values.length); 
-    return values[randomIndex];
+const getColorProp = (hasSameColor:boolean, colorName:string) => {
+    if (hasSameColor) return colorName;
+    return faker.color.human();
 }

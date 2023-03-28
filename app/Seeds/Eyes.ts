@@ -2,7 +2,7 @@
  * Collection of eye types
  */
 export const EyeTypes = [
-    "frindly",
+    "friendly",
     "innocent",
     "serious",
     "crazy",

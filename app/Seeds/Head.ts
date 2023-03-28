@@ -13,5 +13,6 @@ export const HeadTypesAccessories = [
     "helmet",
     "top hat",
     "straw hat",
-    "beret"
+    "beret",
+    "rabbit ears",
 ]

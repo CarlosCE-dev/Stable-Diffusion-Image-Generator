@@ -1,14 +1,14 @@
 import { IPropModel } from "App/Interfaces/IPropModel";
 import { RandomModel } from "App/Models/RandomModel";
 import { ChatInputCommandInteraction } from "discord.js";
-import { randomIntFromInterval } from "./RandomGenerator";
+import { randomIntFromInterval } from "./RandomHelper";
 
 /**
  * Get random props for image generation
  * @returns Returns the prop from the interaction
  */
 export const getRandomPropsForDiscord = (): IPropModel => {
-    return { tags: new RandomModel().getValues(), size: randomIntFromInterval(0, 2), seed: -1, negative: "" }
+    return { ...new RandomModel().getValues(), size: randomIntFromInterval(0, 2), seed: -1 }
 }
 /**
  * Get the props from the discord interaction
