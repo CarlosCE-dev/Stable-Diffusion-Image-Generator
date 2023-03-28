@@ -4,11 +4,20 @@ import { IPropModel } from "App/Interfaces/IPropModel";
  * Generate the follow up message for discord bot
  * @param data The basic prop model data
  * @param username The user name
- * @param newSeed The new seed provided by stable diffusion
+ * @param newSeed The new seed provided by stable stableDiffusionObject
+ * @param isRandomCommand Indicates if the message was random generated
  * @returns A message
  */
-export const generateFollowUpMessage = (data:IPropModel, username:string, newSeed:number) => {
-    return `Image created by ${username} with the following tags: ${data.tags}.${generateNegativeMessage(data.negative)} [Seed: ${newSeed}]`;
+export const generateFollowUpMessage = (data:IPropModel, username:string, newSeed:number, isRandomCommand:boolean) => {
+    return `${getStartUpMessage(isRandomCommand)} ${username} with the following tags: ${data.tags}.${generateNegativeMessage(data.negative)} [Seed: ${newSeed}]`;
+}
+/**
+ * Get start up message
+ * @param state Flag that indicates if is random command
+ * @returns A basic start up message
+ */
+const getStartUpMessage = (state:boolean) => {
+    return state ? "Image created by" : "Random image requested by"
 }
 /**
  * Generate negative message if required

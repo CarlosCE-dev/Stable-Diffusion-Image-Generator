@@ -1,3 +1,6 @@
+/**
+ * Collection of hair types
+ */
 export const HairTypes = [
     'long',
     'short',

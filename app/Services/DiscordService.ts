@@ -3,9 +3,7 @@ import Env from '@ioc:Adonis/Core/Env';
 import Logger from '@ioc:Adonis/Core/Logger';
 import { getImageRequester } from 'App/Helpers/ImageGenerator';
 import { generateFollowUpMessage } from 'App/Helpers/TextGenerator';
-import path from 'path';
-import { generateCommands, getOptionsFromDiscordProps } from 'App/Helpers/DiscordHelper';
-import Drive from '@ioc:Adonis/Core/Drive'
+import { generateCommands, getOptionsFromDiscordProps, getRandomPropsForDiscord } from 'App/Helpers/DiscordHelper';
 
 /**
  * Custom service to retain all the discord bot functionality
@@ -29,14 +27,14 @@ class DiscordService {
             if (!interaction.isChatInputCommand()) return;
             await interaction.reply({ content: "Generating image", ephemeral: true});
             
-            const data = getOptionsFromDiscordProps(interaction);
+            const isRandomCommand = interaction.commandName === "image";
+            const data = isRandomCommand
+                ? getOptionsFromDiscordProps(interaction) 
+                : getRandomPropsForDiscord();
             const { success, data:stableDiffusionObject } = await getImageRequester(data);
-
-            const { dirname } = require('path');
-
             if (success && stableDiffusionObject) {
                 const image = new AttachmentBuilder(`${Env.get("DRIVE_FILE_LOCATION")}\\${stableDiffusionObject.fileName}`);
-                await interaction.followUp({ content: generateFollowUpMessage(data, interaction.user.username, stableDiffusionObject.newSeed), files: [image]});
+                await interaction.followUp({ content: generateFollowUpMessage(data, interaction.user.username, stableDiffusionObject.newSeed, isRandomCommand), files: [image]});
             } else {
                 await interaction.followUp({ content: "An error occurred while trying to generate the image"});
             }

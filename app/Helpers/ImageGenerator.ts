@@ -9,8 +9,8 @@ import Env from '@ioc:Adonis/Core/Env';
 
 /**
  * Generate a HTTP petition to stable diffusion
- * @param data 
- * @returns 
+ * @param data The basic props for {@link StableDiffusionRequest}
+ * @returns A basic response from image requester
  */
 export const getImageRequester = async (data:IPropModel): Promise<IBasicApiResponse> => {
     
@@ -21,14 +21,12 @@ export const getImageRequester = async (data:IPropModel): Promise<IBasicApiRespo
                 'Content-Type': 'application/json'
             }
         });
-
         if (response.status !== HttpStatusCode.Ok) {
             throw Error(response.statusText);
         }
 
         const { images, info } = response.data;
         const [ firstImage ] = images;
-
         const infoTags = JSON.parse(info) as IStableDiffusionInfoResponse;
 
         const fileName = `${new Date().valueOf()}-${infoTags.seed}.png`;

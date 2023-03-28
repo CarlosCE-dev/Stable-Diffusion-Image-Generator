@@ -1,4 +1,5 @@
 import { IPropModel } from "App/Interfaces/IPropModel"
+import { sizeTypes } from "App/Types/SizeTypes";
 import { StableBasicProps } from "./StableBasicProps";
 
 /**
@@ -71,21 +72,6 @@ export class StableDiffusionRequest extends StableBasicProps {
      * @param value The size type
      */
     private sizeGenerator = (value: number) => {
-        const sizeTypes = {
-            [0]: {
-                width: 500,
-                height: 500,
-            },
-            [1]: {
-                width: 500,
-                height: 1000,
-            },
-            [2]: {
-                width: 1000,
-                height: 500,
-            }
-        }
-
         const size = sizeTypes[value];
         if (!size) {
             this.width = 500;

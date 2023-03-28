@@ -1,3 +1,6 @@
+/**
+ * Collection of adjectives sizes
+ */
 export const AdjectivesSize = [
     "long",
     "small",
