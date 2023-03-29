@@ -1,15 +1,4 @@
 /**
- * Collection of eye types
- */
-export const EyeTypes = [
-    "friendly",
-    "innocent",
-    "serious",
-    "crazy",
-    "empty",
-    "villain"
-]
-/**
  * Collection of eye designs
  */
 export const EyesDesignsTypes = [

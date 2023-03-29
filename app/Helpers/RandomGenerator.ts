@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { PropTypeSeed } from "App/Models/Enums/PropTypeSeed";
-import { BodyAccessoriesTypes, BodyCostumeTypes, BodyPosesTypes, BodyProportionsTypes, EyesDesignsTypes, EyeTypes, FaceAccessoryTypes, FaceExpressionTypes, FeetAccessoriesTypes, HairTypes, HeadAccessoriesTypes, LegsAccessoriesTypes, PlaceTypes, TimeTypes } from "App/Seeds";
+import { BodyAccessoriesTypes, BodyCostumeTypes, BodyPosesTypes, BodyProportionsTypes, EyesDesignsTypes, FaceAccessoryTypes, FaceExpressionTypes, FeetAccessoriesTypes, HairTypes, HeadAccessoriesTypes, LegsAccessoriesTypes, PlaceTypes, TimeTypes } from "App/Seeds";
 import { getRandomBoolean, getRandomElementFromArray } from "./RandomHelper";
 import "../Extensors/StringExtensors";
 
@@ -20,7 +20,7 @@ export const randomHairGenerator = (hasSameColor:boolean, colorName:string) => {
  * @returns random string
  */
 export const randomEyesGenerator = (hasSameColor:boolean, colorName:string) => {
-    return `${getRandomElementFromArray(EyeTypes)} ${getColorProp(hasSameColor, colorName)} eyes`.importance();
+    return `${getColorProp(hasSameColor, colorName)} eyes`.importance();
 }
 /**
  * Adds negative tags to  random model
@@ -28,7 +28,9 @@ export const randomEyesGenerator = (hasSameColor:boolean, colorName:string) => {
  */
 export const randomNegativeTagsGenerator = () => {
     const hasNSFW = getRandomBoolean(0.1);
-    return hasNSFW ? "nsfw" : "";
+    let nsfw = hasNSFW ? "nsfw" : "";
+
+    return [nsfw, basicNegativePropsFix()].filter(v => v.trim() !== "").join(', ');
 }
 /**
  * Generates random expression
@@ -75,4 +77,17 @@ const getArrayBasedOnType = {
     [PropTypeSeed.HeadAccessory]: HeadAccessoriesTypes,
     [PropTypeSeed.LegAccessory]: LegsAccessoriesTypes,
     [PropTypeSeed.FeetAccessory]: FeetAccessoriesTypes,
+}
+/**
+ * Generate basic negative props fix
+ */
+const basicNegativePropsFix = () => {
+    const tags = [
+        getRandomBoolean(0.5) ? "extra fingers, fewer fingers, extra hands" : "",
+        getRandomBoolean(0.5) ? "mutation, deformed" : "",
+        getRandomBoolean(0.5) ? "poorly drawn face" : "",
+        getRandomBoolean(0.5) ? "extra leg, extra foot" : "",
+    ].filter(t => t.trim() !== "").join(', ');
+    
+    return tags;
 }

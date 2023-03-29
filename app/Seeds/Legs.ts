@@ -15,7 +15,7 @@ export const LegsAccessoriesTypes = [
     "fishnets (legware)",
     "torn legware ,black leggings",
     "black legwear",
-    "black pink argyle Print Tights",
+    "black pink argyle print tights",
     "bobby socks",
     "garter belt",
     "green legware",

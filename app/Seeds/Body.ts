@@ -108,15 +108,14 @@ export const BodyAccessoriesTypes = [
  * Body proportions types
  */
 export const BodyProportionsTypes = [
-    "plus size",
+    "plus size breasts",
     "very small breasts",
     "extra large breast",
     "flat chest",
-    "plus size",
     "very small breasts",
     "extra large breasts",
     "fat",
-    "clevage",
+    "cleavage",
     "large breast",
     "pregnant",
     "skinny",
