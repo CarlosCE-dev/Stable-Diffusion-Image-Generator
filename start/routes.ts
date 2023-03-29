@@ -17,9 +17,10 @@
 | import './routes/customer'
 |
 */
-
 import Route from '@ioc:Adonis/Core/Route';
 import TestsController from 'App/Controllers/Http/TestsController';
+import { getRandomPropsForDiscord } from 'App/Helpers/DiscordHelper';
+import { getImageRequester } from 'App/Helpers/ImageGenerator';
 
 /**
  * Basic test route
@@ -27,3 +28,15 @@ import TestsController from 'App/Controllers/Http/TestsController';
 Route.get('/test', async (ctx) => {
 	return new TestsController().index(ctx);
 })
+/**
+ * Basic edge view for testing
+ */
+Route.get('/', async ({ view }) => {
+	const data = getRandomPropsForDiscord();
+	const { success, data:item } = await getImageRequester(data);
+	if (success && item) {
+		return view.render('home', item);
+	} else {
+		return view.render('error');
+	}
+});
