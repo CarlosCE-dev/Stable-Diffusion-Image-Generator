@@ -1,3 +1,4 @@
+@set('url', `uploads/${state.fileName}`)
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,9 +20,17 @@
 						<li class="list-group-item">{{ state.newSeed }}</li>
 					</ul>
 				</div>
-				@set('url', `uploads/${state.fileName}`)
-				<img src="{{ url }}" class="img-thumbnail" alt="...">
+				<div>
+					<img id="image" src="{{ url }}" class="img-thumbnail" alt="...">
+				</div>
 			@end
 		</main>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#image').ezPlus({ scrollZoom: true });
+			});
+		</script>
 	</body>
 </html>

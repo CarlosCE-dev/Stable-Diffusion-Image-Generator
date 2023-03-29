@@ -4,8 +4,6 @@
 export const HairTypes = [
     'long',
     'short',
-    'thick',
-    'thinning',
     'curly',
     'kinky',
     'straight',

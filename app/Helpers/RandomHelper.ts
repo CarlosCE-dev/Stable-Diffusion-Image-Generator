@@ -32,9 +32,29 @@ export const getRandomBoolean = (probabilityOfTrue:number = 0.5) => {
  */
 export const generateRandomParenthesesArray = () => {
     const items = [
-        { id: 1, chance: 70 },
-        { id: 2, chance: 15 },
-        { id: 3, chance: 10 },
+        { id: 0, chance: 70 },
+        { id: 1, chance: 15 },
+        { id: 2, chance: 10 },
+        { id: 3, chance: 5 },
+    ];
+    const expanded = items.flatMap(i => Array(i.chance).fill(i));
+
+    // Shuffle array
+    shuffleArray(expanded);
+
+    // Select a random item
+    const winner = expanded[Math.floor(Math.random() * expanded.length)];
+    return items.find(r => r.id === winner.id)?.id ?? 1;
+}
+/**
+ * Generate random amount of people to show
+ * @returns A number of people to show
+ */
+export const generateRandomPeopleToShow = () => {
+    const items = [
+        { id: 1, chance: 80 },
+        { id: 2, chance: 10 },
+        { id: 3, chance: 5 },
         { id: 4, chance: 5 },
     ];
     const expanded = items.flatMap(i => Array(i.chance).fill(i));

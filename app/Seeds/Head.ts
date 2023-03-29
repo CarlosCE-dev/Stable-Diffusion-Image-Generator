@@ -15,4 +15,14 @@ export const HeadTypesAccessories = [
     "straw hat",
     "beret",
     "rabbit ears",
-]
+    "party hat",
+    "cowboy hat",
+    "chef hat",
+    "dragon horns",
+    "demon horns",
+    "unicorn horn",
+    "hat",
+    "bow on head",
+    "joker hat",
+    "ribbons"
+];

@@ -11,6 +11,4 @@ export const AdjectivesSize = [
     "extra big",
     "tiny",
     "mini",
-    "extra huge",
-    "thick"
 ]
