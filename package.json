@@ -19,7 +19,8 @@
     "pino-pretty": "^10.0.0",
     "typescript": "~5.0",
     "youch": "^3.2.3",
-    "youch-terminal": "^2.2.0"
+    "youch-terminal": "^2.2.0",
+    "glob-parent": "^6.0.1"
   },
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
@@ -31,5 +32,8 @@
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
+  },
+  "overrides": {
+    "glob-parent": "$glob-parent"
   }
 }

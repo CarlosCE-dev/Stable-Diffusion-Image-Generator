@@ -14,5 +14,16 @@ export const HairTypes = [
     'twin tail',
     'ponytail',
     'spiky',
-    'bal',
+    'bald',
+    "afro",
+    "drill twin tails",
+    "cornrows",
+    "french braid",
+    "quad drills",
+    "side ponytail",
+    "single braid",
+    "twin braids",
+    "noodle",
+    "messy",
+    "tentacle"
 ];

@@ -17,7 +17,27 @@ export const FaceExpressionTypes = [
     "love",
     "very angry",
     "flirty",
-    "pleased"
+    "pleased",
+    "laughing",
+    "crying, smile",
+    "sleepy",
+    "screaming",
+    "surprised",
+    'annoyed',
+    "clenched teeth",
+    "evil smile",
+    "fang",
+    "food on",
+    "frown",
+    "hands cover mouth",
+    "licking lips",
+    "mouth hold",
+    "naughty",
+    "one eye closed",
+    "pain",
+    "tongue",
+    "yandere",
+    "worried"
 ]
 /**
  * Face accessory types
@@ -38,4 +58,13 @@ export const FaceAccessoryTypes = [
     "chin strap",
     "beard",
     "mustache",
+    "earrings",
+    "elf",
+    "cow ears",
+    "monkey ears",
+    "sheep ears",
+    "elf",
+    "gas mask",
+    "goggles",
+    "mask"
 ]

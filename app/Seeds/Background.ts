@@ -32,6 +32,28 @@ export const PlaceTypes = [
     "at the dungeon",
     "inside a jar",
     "at the mountains",
+    "on a rooftop",
+    "top of a building",
+    "at the amusement park",
+    "in autumn",
+    "sun flower field",
+    "at the flower shop",
+    "at the comfy living room",
+    "outer space",
+    "at the arcade game",
+    "at the cafe",
+    "cityscape",
+    "at the classroom",
+    "in a desert",
+    "in a indoor pool",
+    "landscape",
+    "magic circle",
+    "at the pool",
+    "rain",
+    "in a ruins",
+    "shooting star",
+    "snow",
+    "at the vending machine"
 ];
 /**
  * Collection of times

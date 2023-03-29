@@ -1,7 +1,7 @@
 /**
  * Collection of head type accessories
  */
-export const HeadTypesAccessories = [
+export const HeadAccessoriesTypes = [
     "cat ears",
     "dog ears",
     "witch hat",
@@ -24,5 +24,15 @@ export const HeadTypesAccessories = [
     "hat",
     "bow on head",
     "joker hat",
-    "ribbons"
+    "ribbons",
+    "headphones",
+    "hair accessories",
+    "hair bow",
+    "hair ribbon",
+    "hairband",
+    "halo",
+    "hood",
+    "maid headdress",
+    "red japanese oni horns",
+    "tiara"
 ];
