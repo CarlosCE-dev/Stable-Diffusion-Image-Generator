@@ -53,7 +53,16 @@ export const PlaceTypes = [
     "in a ruins",
     "shooting star",
     "snow",
-    "at the vending machine"
+    "at the vending machine",
+    "at the waterfall",
+    "vegetation",
+    "cyberpunk",
+    "in a dark alley",
+    "at the office",
+    "on the bed",
+    "on bus",
+    "in a train",
+    "heart background"
 ];
 /**
  * Collection of times

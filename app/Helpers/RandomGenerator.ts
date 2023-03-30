@@ -11,7 +11,8 @@ import "../Extensors/StringExtensors";
  * @returns random string
  */
 export const randomHairGenerator = (hasSameColor:boolean, colorName:string) => {
-    return `${getRandomElementFromArray(HairTypes)} ${getColorProp(hasSameColor, colorName)} hair`.importance();
+    const hairType = getRandomElementFromArray(HairTypes);
+    return hairType === "bald" ? hairType.importance() : `${getRandomElementFromArray(HairTypes)} ${getColorProp(hasSameColor, colorName)} hair`.importance();
 }
 /**
  * Generates random eyes

@@ -45,6 +45,10 @@ export const BodyPosesTypes = [
     "squatting",
     "squatting, ass focus",
     "thigh straddling",
+    "showing panties",
+    "selfie",
+    "leaning",
+    "spread arms"
 ]
 /**
  * Body accessories types
@@ -102,7 +106,10 @@ export const BodyAccessoriesTypes = [
     "ice cream",
     "microphone",
     "piano",
-    "wine glass"
+    "wine glass",
+    "ring",
+    "dakimakura",
+    "nendroid"
 ];
 /**
  * Body proportions types
@@ -122,6 +129,7 @@ export const BodyProportionsTypes = [
     "plus size torso",
     "plus size legs",
     "small breasts",
+    "muscular"
 ];
 /**
  * Body costume types
@@ -164,5 +172,30 @@ export const BodyCostumeTypes = [
     "stripe pajamas",
     "wafuku",
     "wedding dress",
-    "nude"
+    "nude",
+    "blouse",
+    "cheerleader",
+    "secretary",
+    "leotard"
+];
+/**
+ * Body gender types
+ */
+export const BodyGenderTypes = [
+    "shota",
+    "loli",
+    "feminine boy",
+    "old woman",
+    "teenage",
+    "student",
+    "milf",
+    "man",
+    "woman",
+    "boy",
+    "girl",
+    "kawaii",
+    "mature female",
+    "old man",
+    "tom girl",
+    "crossdressing"
 ]

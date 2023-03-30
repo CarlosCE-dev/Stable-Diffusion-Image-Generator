@@ -23,7 +23,7 @@ export class StableBasicProps {
         this.sampler_name = "";
         this.batch_size = 1;
         this.n_iter = 1;
-        this.steps = 30;
+        this.steps = 20;
         this.cfg_scale = 7;
         this.restore_faces = false;
         this.tiling = false;
@@ -60,7 +60,7 @@ export class StableBasicProps {
     sampler_name: "";
     batch_size: 1;
     n_iter: 1;
-    steps: 30;
+    steps: 20;
     cfg_scale: 7;
     restore_faces: false;
     tiling: false;

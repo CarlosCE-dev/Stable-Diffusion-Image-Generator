@@ -24,7 +24,9 @@ export const LegsAccessoriesTypes = [
     "pink thighhighs",
     "stocking",
     "striped thighhighs",
-    "torn thighhighs"
+    "torn thighhighs",
+    "pajamas",
+    "thong"
 ]
 /**
  * Feet accessories types

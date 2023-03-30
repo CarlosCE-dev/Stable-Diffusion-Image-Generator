@@ -137,9 +137,9 @@ export class RandomModel {
         ]).filter(v => v.trim() !== "");
         shuffleArray(props);
         return {
-            tags: props.join(', '),
+            tags: `${otherProps}, ${props.join(', ')}`,
             negative: this.negativeTags
         }
     }
 }
-
+const otherProps = "masterpiece, best quality, vivid color";

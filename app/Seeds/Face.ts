@@ -66,5 +66,6 @@ export const FaceAccessoryTypes = [
     "elf",
     "gas mask",
     "goggles",
-    "mask"
+    "mask",
+    "makeup"
 ]
