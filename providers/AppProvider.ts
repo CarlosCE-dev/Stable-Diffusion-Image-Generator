@@ -1,23 +1,16 @@
-import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
+import Env from '@ioc:Adonis/Core/Env';
 
+/**
+ * App provider
+ */
 export default class AppProvider {
-    constructor(protected app: ApplicationContract) {
-    }
-
-    public register() {
-        // Register your own bindings
-    }
-
-    public async boot() {
-        // IoC container is ready
-    }
-
+    /**
+     * On ready method
+     */
     public async ready() {
-        const discordService = (await import('App/Services/DiscordService')).default;
-        discordService.start();
-    }
-
-    public async shutdown() {
-        // Cleanup, since app is going down
+        if (Env.get("DISCORD_SERVICE_ENABLED")) {
+            const discordService = (await import('App/Services/DiscordService')).default;
+            discordService.start();
+        }
     }
 }

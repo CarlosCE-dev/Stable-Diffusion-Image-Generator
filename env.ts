@@ -24,6 +24,7 @@ export default Env.rules({
 	DISCORD_CLIENT_ID: Env.schema.string(),
 	DISCORD_BOT_TOKEN: Env.schema.string(),
 	DISCORD_GUILD_ID: Env.schema.string(),
+	DISCORD_SERVICE_ENABLED: Env.schema.boolean(),
 	STABLE_DIFFUSION_URL: Env.schema.string(),
 	DRIVE_FILE_LOCATION: Env.schema.string(),
-})
+});

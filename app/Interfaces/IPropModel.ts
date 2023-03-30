@@ -1,7 +1,7 @@
 import { StableDiffusionRequest } from 'App/Models/StableDiffusionRequest';
 
 /**
- * Basic props required for {@link StableDiffusionRequest}
+ * Basic props required for {@link StableDiffusionRequest} class
  */
 export interface IPropModel {
     /**

@@ -78,6 +78,10 @@ export class RandomModel {
      */
     feetAccessory: string;
     /**
+     * Body gender tag
+     */
+    bodyGender: string;
+    /**
      * Basic class constructor
      */
     constructor() {
@@ -95,10 +99,11 @@ export class RandomModel {
         this.bodyPose = randomBodyPoseGenerator();
         this.bodyView = "";
         this.bodyProportions = getRandomBoolean(0.7) ? randomBasicPropGenerator(PropTypeSeed.BodyProportion) : "";
+        this.bodyGender = getRandomBoolean(0.3) ? randomBasicPropGenerator(PropTypeSeed.BodyGender) : "";
 
         // Other generation
-        this.place = randomBasicPropGenerator(PropTypeSeed.Place);
-        this.time = randomBasicPropGenerator(PropTypeSeed.Time);
+        this.place = getRandomBoolean(0.7) ? randomBasicPropGenerator(PropTypeSeed.Place) : "";
+        this.time = getRandomBoolean(0.7) ? randomBasicPropGenerator(PropTypeSeed.Time) : "";
         this.negativeTags = randomNegativeTagsGenerator();
 
         // Props
@@ -133,7 +138,8 @@ export class RandomModel {
             this.bodyCostume,
             this.bodyProportions,
             this.legAccessory,
-            this.feetAccessory
+            this.feetAccessory,
+            this.bodyGender
         ]).filter(v => v.trim() !== "");
         shuffleArray(props);
         return {

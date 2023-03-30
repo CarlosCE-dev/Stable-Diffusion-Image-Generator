@@ -41,5 +41,9 @@ export enum PropTypeSeed {
     /**
      * Feet accessory seed
      */
-    FeetAccessory
+    FeetAccessory,
+    /**
+     * Body gender seed
+     */
+    BodyGender
 }

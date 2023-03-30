@@ -193,7 +193,6 @@ export const BodyGenderTypes = [
     "woman",
     "boy",
     "girl",
-    "kawaii",
     "mature female",
     "old man",
     "tom girl",

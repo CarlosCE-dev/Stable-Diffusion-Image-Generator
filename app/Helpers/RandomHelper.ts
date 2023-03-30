@@ -55,7 +55,7 @@ export const generateRandomPeopleToShow = () => {
         { id: 1, chance: 80 },
         { id: 2, chance: 10 },
         { id: 3, chance: 5 },
-        { id: 4, chance: 5 },
+        { id: randomIntFromInterval(4, 10), chance: 5 },
     ];
     const expanded = items.flatMap(i => Array(i.chance).fill(i));
 

@@ -54,13 +54,13 @@ export const PlaceTypes = [
     "shooting star",
     "snow",
     "at the vending machine",
-    "at the waterfall",
+    "at a waterfall",
     "vegetation",
     "cyberpunk",
     "in a dark alley",
     "at the office",
     "on the bed",
-    "on bus",
+    "in a bus",
     "in a train",
     "heart background"
 ];

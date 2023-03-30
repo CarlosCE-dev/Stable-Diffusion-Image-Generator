@@ -27,14 +27,14 @@ class DiscordService {
             if (!interaction.isChatInputCommand()) return;
             await interaction.reply({ content: "Generating image", ephemeral: true});
             
-            const isRandomCommand = interaction.commandName === "image";
-            const data = isRandomCommand
+            const isNormalCommand = interaction.commandName === "image";
+            const data = isNormalCommand
                 ? getOptionsFromDiscordProps(interaction) 
                 : getRandomPropsForDiscord();
             const { success, data:stableDiffusionObject } = await getImageRequester(data);
             if (success && stableDiffusionObject) {
                 const image = new AttachmentBuilder(`${Env.get("DRIVE_FILE_LOCATION")}\\${stableDiffusionObject.fileName}`);
-                await interaction.followUp({ content: generateFollowUpMessage(data, interaction.user.username, stableDiffusionObject.newSeed, isRandomCommand), files: [image]});
+                await interaction.followUp({ content: generateFollowUpMessage(data, interaction.user.username, stableDiffusionObject.newSeed, isNormalCommand), files: [image]});
             } else {
                 await interaction.followUp({ content: "An error occurred while trying to generate the image"});
             }

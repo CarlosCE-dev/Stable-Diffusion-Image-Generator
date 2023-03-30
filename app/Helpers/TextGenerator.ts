@@ -5,11 +5,11 @@ import { IPropModel } from "App/Interfaces/IPropModel";
  * @param data The basic prop model data
  * @param username The user name
  * @param newSeed The new seed provided by stable stableDiffusionObject
- * @param isRandomCommand Indicates if the message was random generated
- * @returns A message
+ * @param isNormalCommand Indicates if the message was random generated
+ * @returns A message for discord interaction
  */
-export const generateFollowUpMessage = (data:IPropModel, username:string, newSeed:number, isRandomCommand:boolean) => {
-    return `${getStartUpMessage(isRandomCommand)} ${username} with the following tags: ${data.tags}.${generateNegativeMessage(data.negative)} [Seed: ${newSeed}]`;
+export const generateFollowUpMessage = (data:IPropModel, username:string, newSeed:number, isNormalCommand:boolean) => {
+    return `${getStartUpMessage(isNormalCommand)} ${username} with the following tags: ${data.tags}.${generateNegativeMessage(data.negative)} [Seed: ${newSeed}]`;
 }
 /**
  * Get start up message
@@ -17,7 +17,7 @@ export const generateFollowUpMessage = (data:IPropModel, username:string, newSee
  * @returns A basic start up message
  */
 const getStartUpMessage = (state:boolean) => {
-    return state ? "Image created by" : "Random image requested by"
+    return state ? "Image created by" : "Random image requested by";
 }
 /**
  * Generate negative message if required
@@ -25,6 +25,5 @@ const getStartUpMessage = (state:boolean) => {
  * @returns Returns the negative tags
  */
 const generateNegativeMessage = (value:string) => {
-    if (value === "") return "";
-    return ` Negative tags: ${value}`;
+    return value === "" ? "" : ` Negative tags: ${value}`;
 }

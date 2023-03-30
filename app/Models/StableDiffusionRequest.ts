@@ -1,5 +1,5 @@
+import { sizeTypesList } from "App/Helpers/SizeHelper";
 import { IPropModel } from "App/Interfaces/IPropModel"
-import { sizeTypes } from "App/Types/SizeTypes";
 import { StableBasicProps } from "./StableBasicProps";
 
 /**
@@ -60,25 +60,15 @@ export class StableDiffusionRequest extends StableBasicProps {
      */
     private negativeTags = (value: string) => {
         const negative = '(worst quality, low quality:1.4), monochrome, zombie';
-        if (value === "") {
-            this.negative_prompt = negative;
-            return;
-        }
-
-        this.negative_prompt = `${negative}, ${value}`;
+        this.negative_prompt = value === "" ?  negative : `${negative}, ${value}`;
     }
     /**
      * Set the height and width for image
      * @param value The size type
      */
     private sizeGenerator = (value: number) => {
-        const size = sizeTypes[value];
-        if (!size) {
-            this.width = 500;
-            this.height = 500;
-        } else {
-            this.width = size.width;
-            this.height = size.height;
-        }
+        const size = sizeTypesList[value];
+        this.width = size?.width ?? 500;
+        this.height = size?.height ?? 500;
     }
 }

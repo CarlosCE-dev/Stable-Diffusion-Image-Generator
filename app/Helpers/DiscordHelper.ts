@@ -1,4 +1,5 @@
 import { IPropModel } from "App/Interfaces/IPropModel";
+import { SizeTypes } from "App/Models/Enums/SizeTypes";
 import { RandomModel } from "App/Models/RandomModel";
 import { ChatInputCommandInteraction } from "discord.js";
 import { randomIntFromInterval } from "./RandomHelper";
@@ -8,7 +9,7 @@ import { randomIntFromInterval } from "./RandomHelper";
  * @returns Returns the prop from the interaction
  */
 export const getRandomPropsForDiscord = (): IPropModel => {
-    return { ...new RandomModel().getValues(), size: randomIntFromInterval(0, 2), seed: -1 }
+    return { ...new RandomModel().getValues(), size: randomIntFromInterval(SizeTypes.Square, SizeTypes.Landscape), seed: -1 };
 }
 /**
  * Get the props from the discord interaction
@@ -17,7 +18,7 @@ export const getRandomPropsForDiscord = (): IPropModel => {
  */
 export const getOptionsFromDiscordProps = (interaction: ChatInputCommandInteraction): IPropModel => {
     const tags = interaction.options.get('tags')?.value ?? "";
-    const size = interaction.options.get('size')?.value ?? 0;
+    const size = interaction.options.get('size')?.value ?? SizeTypes.Landscape;
     const negative = interaction.options.get('negative')?.value ?? "";
     const seed = interaction.options.get('seed')?.value ?? -1;
 
@@ -47,15 +48,15 @@ export const generateCommands = () => {
                     choices: [
                         {
                             name: "Square: 500 X 500 pixels",
-                            value: 0
+                            value: SizeTypes.Square
                         },
                         {
                             name: "Portrait: 1000 x 500 pixels",
-                            value: 1
+                            value: SizeTypes.Portrait
                         },
                         {
                             name: "Landscape: 500 x 1000 pixels",
-                            value: 2
+                            value: SizeTypes.Landscape
                         },
                     ]
                 },
