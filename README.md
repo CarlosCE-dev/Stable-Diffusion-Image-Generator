@@ -16,7 +16,7 @@ This app use `EasyNegative` for negative prompts. You must have installed `EasyN
 ## Installation
 
 #### Environment setup
-Before running the project you must configure your environments
+Before running the project you must configure your environments.
 Copy the environments from the file `.env.example` and create a new file called `.env`. Paste all the environments copied to the file `.env`.
 You can configure the following properties as you need: 
 
