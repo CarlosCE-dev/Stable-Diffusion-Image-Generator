@@ -16,10 +16,10 @@ This app use `EasyNegative` for negative prompts. You must have installed `EasyN
 ## Installation
 
 #### Environment setup
-Before running the project you must configure your environments.
+Before running the project you must configure your environments.\
 Copy the environments from the file `.env.example` and create a new file called `.env`. Paste all the environments copied to the file `.env`.
-You can configure the following properties as you need: 
-
+You can configure the following properties as you need:\
+****<sub>Ignore the discord enviroments if your are not setting up the discord bot</sub>****
 | Environment Variables   | Description                                                                                                   |
 |-------------------------|---------------------------------------------------------------------------------------------------------------|
 | DISCORD_CLIENT_ID       | Your application's client id ([Discord Developer Portal](https://discord.com/developers/applications) > "General Information" > application id)              |
@@ -29,7 +29,8 @@ You can configure the following properties as you need:
 | STABLE_DIFFUSION_URL    | Your basic url where your STABLE DIFFUSION app is located                                                     |
 | DRIVE_FILE_LOCATION     | Your full path of where your file have been upload. This field is required if your are using the discord bot |
 
-<small>If your having trouble configuring your environment's just leave them exact as the .env.example file</small>
+<sub>If your having trouble configuring your environment's just leave them exact as the .env.example file</sub>
+
 #### How to run project
 Open this project in your terminal in run the following commands
 
