@@ -4,7 +4,6 @@ import { randomBasicPropGenerator, randomBodyPoseGenerator, randomEyesGenerator,
 import { generateRandomPeopleToShow, getRandomBoolean } from "App/Helpers/RandomHelper";
 import { PropTypeSeed } from "./Enums/PropTypeSeed";
 
-
 /**
  * Random model generator
  */
@@ -154,4 +153,7 @@ export class RandomModel {
         }
     }
 }
+/**
+ * Basic prompts
+ */
 const otherProps = "masterpiece, best quality, vivid color";

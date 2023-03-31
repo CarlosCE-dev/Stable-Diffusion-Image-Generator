@@ -11,13 +11,22 @@
 	</head>
 	<body>
 		<main>
-			<h1 class="mr-2">Random image generated</h1>  
+			<h1 class="ml-2">Random image generated</h1>  
 			@if(state)
 				<div>
 					<ul class="list-group">
-						<li class="list-group-item">{{ state.prompt }}</li>
-						<li class="list-group-item">{{ state.negative_prompt}}</li>
-						<li class="list-group-item">{{ state.newSeed }}</li>
+						<li class="list-group-item">
+							<strong>Prompts: </strong>
+							{{ state.prompt }}
+						</li>
+						<li class="list-group-item">
+							<strong>Negative prompts: </strong>
+							{{ state.negative_prompt}}
+						</li>
+						<li class="list-group-item">
+							<strong>Seed: </strong>
+							{{ state.newSeed }}
+						</li>
 					</ul>
 				</div>
 				<div>
