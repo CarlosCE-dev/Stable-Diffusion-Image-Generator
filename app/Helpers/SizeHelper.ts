@@ -5,15 +5,15 @@ import { SizeTypes } from "App/Models/Enums/SizeTypes";
  */
 export const sizeTypesList = {
     [SizeTypes.Square]: {
-        width: 500,
-        height: 500,
+        width: 512,
+        height: 512,
     },
     [SizeTypes.Portrait]: {
-        width: 500,
-        height: 1000,
+        width: 512,
+        height: 1024,
     },
     [SizeTypes.Landscape]: {
-        width: 1000,
-        height: 500,
+        width: 1024,
+        height: 512,
     }
 }

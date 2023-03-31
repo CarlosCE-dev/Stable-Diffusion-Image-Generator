@@ -59,7 +59,7 @@ export class StableDiffusionRequest extends StableBasicProps {
      * @param value The negative tags provided by the user
      */
     private negativeTags = (value: string) => {
-        const negative = '(worst quality, low quality:1.4), monochrome, zombie';
+        const negative = 'EasyNegative, (worst quality, low quality:1.4), monochrome, zombie';
         this.negative_prompt = value === "" ?  negative : `${negative}, ${value}`;
     }
     /**

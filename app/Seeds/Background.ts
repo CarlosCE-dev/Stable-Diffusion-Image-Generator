@@ -62,7 +62,8 @@ export const PlaceTypes = [
     "on the bed",
     "in a bus",
     "in a train",
-    "heart background"
+    "heart background",
+    "cherry blossom forest"
 ];
 /**
  * Collection of times
@@ -75,4 +76,27 @@ export const TimeTypes = [
     "afternoon",
     "sunset",
     "morning"
+]
+/**
+ * Special effect types
+ */
+export const SpecialEffectTypes = [
+    "cinematic lighting",
+    "dynamic lighting",
+    "strong light",
+    "strong light coming in",
+    "light rays",
+    "backlighting",
+    "cinematic shadows",
+    "deep shadows",
+    "spot light",
+    "faint light",
+    'light particles',
+    "light sparkles",
+    "lens flare",
+    "light leaks",
+    "sharp focus",
+    "bokeh",
+    "blurry",
+    "depth of field"
 ]

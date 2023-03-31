@@ -82,6 +82,10 @@ export class RandomModel {
      */
     bodyGender: string;
     /**
+     * Special effect tag
+     */
+    specialEffect: string;
+    /**
      * Basic class constructor
      */
     constructor() {
@@ -105,6 +109,7 @@ export class RandomModel {
         this.place = getRandomBoolean(0.7) ? randomBasicPropGenerator(PropTypeSeed.Place) : "";
         this.time = getRandomBoolean(0.7) ? randomBasicPropGenerator(PropTypeSeed.Time) : "";
         this.negativeTags = randomNegativeTagsGenerator();
+        this.specialEffect = getRandomBoolean(0.5) ? randomBasicPropGenerator(PropTypeSeed.SpecialEffect) : "";
 
         // Props
         this.bodyAccessory = getRandomBoolean(0.3) ? randomBasicPropGenerator(PropTypeSeed.BodyAccessory) : "";
@@ -139,7 +144,8 @@ export class RandomModel {
             this.bodyProportions,
             this.legAccessory,
             this.feetAccessory,
-            this.bodyGender
+            this.bodyGender,
+            this.specialEffect
         ]).filter(v => v.trim() !== "");
         shuffleArray(props);
         return {

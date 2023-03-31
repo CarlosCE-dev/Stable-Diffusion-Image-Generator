@@ -1,5 +1,5 @@
 export { FeetAccessoriesTypes, LegsAccessoriesTypes } from "./Legs";
-export { PlaceTypes, TimeTypes } from "./Background";
+export { PlaceTypes, TimeTypes, SpecialEffectTypes } from "./Background";
 export { FaceExpressionTypes, FaceAccessoryTypes } from "./Face";
 export { EyesDesignsTypes } from "./Eyes";
 export { HairTypes } from "./Hair";

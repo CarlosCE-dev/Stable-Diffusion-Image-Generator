@@ -45,5 +45,9 @@ export enum PropTypeSeed {
     /**
      * Body gender seed
      */
-    BodyGender
+    BodyGender,
+    /**
+     * Special effect seed
+     */
+    SpecialEffect
 }
