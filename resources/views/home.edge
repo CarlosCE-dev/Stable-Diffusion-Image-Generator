@@ -5,13 +5,13 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>My Website</title>
+		<title>Stable Diffusion Image Generator</title>
 		<link rel="icon" href="./favicon.ico" type="image/x-icon">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="stylesheet" href="./lib/bootstrap/bootstrap.css" >
 	</head>
 	<body>
 		<main>
-			<h1 class="ml-2">Random image generated</h1>  
+			<h1 class="ms-4">Stable Diffusion Image Generator</h1>  
 			@if(state)
 				<div>
 					<ul class="list-group">
@@ -29,17 +29,10 @@
 						</li>
 					</ul>
 				</div>
-				<div>
+				<div class="image-container">
 					<img id="image" src="{{ url }}" class="img-thumbnail" alt="...">
 				</div>
 			@end
 		</main>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('#image').ezPlus({ scrollZoom: true });
-			});
-		</script>
 	</body>
 </html>
