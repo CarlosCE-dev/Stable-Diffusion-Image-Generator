@@ -41,7 +41,7 @@ npm run dev
 
 
 ## Usage
-The basic functionality of this project is to get random images based on random props provided by this app. This project contains a lot of useful tags when generating a image with the txt2img functionality of Stable Diffusion.
+The basic functionality of this project is to get random images based on random props provided by this app. This project contains a lot of useful tags when generating an image with the txt2img functionality of Stable Diffusion.
 
 #### Using random prop generator
 After running your program you can access the url of the project to generate random images. Each time you access the home page of this application it will create a image with Stable Diffusion (with random props). Each time you reload the page a new image will be created. All the images will be save in this application in the following route `./tmp/uploads`.
@@ -52,8 +52,12 @@ When you bot is configure correctly in your discord server you can use the follo
 
 | Commands | Description                                     |
 |----------|-------------------------------------------------|
-| image    | Generate images based on tags                   |
-| random   | Generate image based on random character traits |
+| image    | Generate an image based on tags                   |
+| random   | Generate an image based on random character traits |
+
+
+![Tag image](./readme/tag-image.gif) 
+![Random image](./readme/random-image.gif)
 
 ## Recommendations
 Usually i used the following models to generated images:

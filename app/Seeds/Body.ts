@@ -48,7 +48,8 @@ export const BodyPosesTypes = [
     "showing panties",
     "selfie",
     "leaning",
-    "spread arms"
+    "spread arms",
+    "dog"
 ]
 /**
  * Body accessories types
@@ -74,15 +75,12 @@ export const BodyAccessoriesTypes = [
     "dildo",
     "papers",
     "water bottle",
-    "apple",
-    "orange",
-    "carrot",
+    "eating a carrot",
     "boxing gloves",
     "watch",
     "case",
     "game console",
     "spoon",
-    "bucket",
     "laser sword",
     "fire sword",
     "rocket launcher",
@@ -109,7 +107,16 @@ export const BodyAccessoriesTypes = [
     "wine glass",
     "ring",
     "dakimakura",
-    "nendroid"
+    "nendroid",
+    "feathered wings",
+    "fallen angel",
+    "long gloves",
+    "burger",
+    "bike",
+    "motorcycle",
+    "bondage",
+    "chains",
+    "blood"
 ];
 /**
  * Body proportions types
@@ -129,7 +136,10 @@ export const BodyProportionsTypes = [
     "plus size torso",
     "plus size legs",
     "small breasts",
-    "muscular"
+    "muscular",
+    "medium breasts",
+    "big ass",
+    "huge ass",
 ];
 /**
  * Body costume types
@@ -176,7 +186,14 @@ export const BodyCostumeTypes = [
     "blouse",
     "cheerleader",
     "secretary",
-    "leotard"
+    "leotard",
+    "jacket",
+    "see through",
+    "very short dress",
+    "tight dress",
+    "sweater",
+    'wet clothes',
+    "armor"
 ];
 /**
  * Body gender types

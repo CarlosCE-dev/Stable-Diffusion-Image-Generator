@@ -34,5 +34,8 @@ export const HeadAccessoriesTypes = [
     "hood",
     "maid headdress",
     "red japanese oni horns",
-    "tiara"
+    "tiara",
+    "cow ears",
+    "monkey ears",
+    "sheep ears",
 ];

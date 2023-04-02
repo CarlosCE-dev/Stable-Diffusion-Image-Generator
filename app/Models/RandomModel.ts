@@ -116,7 +116,7 @@ export class RandomModel {
         this.faceAccessory = getRandomBoolean(0.3) ? randomBasicPropGenerator(PropTypeSeed.FaceAccessory) : "";
         this.legAccessory = getRandomBoolean(0.5) ? randomBasicPropGenerator(PropTypeSeed.LegAccessory) : "";
         this.feetAccessory = getRandomBoolean(0.5) ? randomBasicPropGenerator(PropTypeSeed.FeetAccessory) : "";
-        
+
         // People amount
         const amountOfPeople = generateRandomPeopleToShow();
         this.peopleLimit = amountOfPeople === 1 ? "1 girl only".importance() : `${amountOfPeople}girls`.importance();
@@ -144,7 +144,7 @@ export class RandomModel {
             this.legAccessory,
             this.feetAccessory,
             this.bodyGender,
-            this.specialEffect
+            this.specialEffect,
         ]).filter(v => v.trim() !== "");
         shuffleArray(props);
         return {

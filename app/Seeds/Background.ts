@@ -63,7 +63,16 @@ export const PlaceTypes = [
     "in a bus",
     "in a train",
     "heart background",
-    "cherry blossom forest"
+    "in cherry blossom forest",
+    "fireworks",
+    "at the festival",
+    "at the shrine",
+    "on the balcony",
+    "in the playground",
+    "outside of the apartment",
+    "near a bridge",
+    "sitting next to a tree",
+    "in a fantasy world"
 ];
 /**
  * Collection of times

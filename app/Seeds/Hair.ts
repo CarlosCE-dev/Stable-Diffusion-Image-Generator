@@ -15,7 +15,6 @@ export const HairTypes = [
     'ponytail',
     'spiky',
     'bald',
-    "afro",
     "drill twin tails",
     "cornrows",
     "french braid",
