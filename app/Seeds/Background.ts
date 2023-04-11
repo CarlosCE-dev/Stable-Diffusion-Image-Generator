@@ -72,7 +72,9 @@ export const PlaceTypes = [
     "outside of the apartment",
     "near a bridge",
     "sitting next to a tree",
-    "in a fantasy world"
+    "in a fantasy world",
+    "at the cemetery",
+    "in a island"
 ];
 /**
  * Collection of times

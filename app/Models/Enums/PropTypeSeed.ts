@@ -50,4 +50,8 @@ export enum PropTypeSeed {
      * Special effect seed
      */
     SpecialEffect,
+    /**
+     * Theme seed
+     */
+    Theme
 }

@@ -8,13 +8,18 @@
 		<title>Stable Diffusion Image Generator</title>
 		<link rel="icon" href="./favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" href="./lib/bootstrap/bootstrap.css" >
+		<style>
+			body {
+				background:black
+			}
+		</style>
 	</head>
 	<body>
 		<main>
-			<h1 class="ms-4">Stable Diffusion Image Generator</h1>  
+			<h1 class="ms-4 text-light">Stable Diffusion Image Generator</h1>  
 			@if(state)
 				<div>
-					<ul class="list-group">
+					<ul class="list-group text-light">
 						<li class="list-group-item">
 							<strong>Prompts: </strong>
 							{{ state.prompt }}

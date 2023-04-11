@@ -85,6 +85,10 @@ export class RandomModel {
      */
     specialEffect: string;
     /**
+     * Theme tag
+     */
+    themeTag: string;
+    /**
      * Basic class constructor
      */
     constructor() {
@@ -116,6 +120,7 @@ export class RandomModel {
         this.faceAccessory = getRandomBoolean(0.3) ? randomBasicPropGenerator(PropTypeSeed.FaceAccessory) : "";
         this.legAccessory = getRandomBoolean(0.5) ? randomBasicPropGenerator(PropTypeSeed.LegAccessory) : "";
         this.feetAccessory = getRandomBoolean(0.5) ? randomBasicPropGenerator(PropTypeSeed.FeetAccessory) : "";
+        this.themeTag = getRandomBoolean(0.05) ? randomBasicPropGenerator(PropTypeSeed.Theme) : "";
 
         // People amount
         const amountOfPeople = generateRandomPeopleToShow();
@@ -145,6 +150,7 @@ export class RandomModel {
             this.feetAccessory,
             this.bodyGender,
             this.specialEffect,
+            this.themeTag
         ]).filter(v => v.trim() !== "");
         shuffleArray(props);
         return {

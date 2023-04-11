@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { PropTypeSeed } from "App/Models/Enums/PropTypeSeed";
-import { BodyAccessoriesTypes, BodyCostumeTypes, BodyGenderTypes, BodyPosesTypes, BodyProportionsTypes, EyesDesignsTypes, FaceAccessoryTypes, FaceExpressionTypes, FeetAccessoriesTypes, HairTypes, HeadAccessoriesTypes, LegsAccessoriesTypes, PlaceTypes, SpecialEffectTypes, TimeTypes } from "App/Seeds";
+import { BodyAccessoriesTypes, BodyCostumeTypes, BodyGenderTypes, BodyPosesTypes, BodyProportionsTypes, EyesDesignsTypes, FaceAccessoryTypes, FaceExpressionTypes, FeetAccessoriesTypes, HairTypes, HeadAccessoriesTypes, LegsAccessoriesTypes, PlaceTypes, SpecialEffectTypes, ThemeTypes, TimeTypes } from "App/Seeds";
 import { getRandomBoolean, getRandomElementFromArray } from "./RandomHelper";
 import "../Extensors/StringExtensors";
 
@@ -79,6 +79,7 @@ const getArrayBasedOnType = {
     [PropTypeSeed.FeetAccessory]: FeetAccessoriesTypes,
     [PropTypeSeed.BodyGender]: BodyGenderTypes,
     [PropTypeSeed.SpecialEffect]: SpecialEffectTypes,
+    [PropTypeSeed.Theme]: ThemeTypes,
 }
 /**
  * Generate basic negative props fix
